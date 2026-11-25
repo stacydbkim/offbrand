@@ -11,7 +11,7 @@
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
   body {
-    background: #fdf9ef;
+    background: #f8efd8;
     min-height: 100vh;
     min-height: 100svh;
     display: flex;
@@ -26,8 +26,7 @@
      that the two stacked images overflow the screen height. */
   .stack {
     --ratio: 1.3997;
-    width: min(100%, calc((100vh - 32px) * var(--ratio) / 2), 1200px);
-    width: min(100%, calc((100svh - 32px) * var(--ratio) / 2), 1200px);
+    width: min(100%, 1600px);   /* fill the screen width; page scrolls */
     display: flex;
     flex-direction: column;
   }
