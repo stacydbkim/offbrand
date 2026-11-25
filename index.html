@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Off-Brand — Brand and Identity Design (F26) Final Show</title>
+<meta name="description" content="Off-Brand: GRDS 471 Brand and Identity Design (F26) Final Show, UTK School of Design. AA 317 & 319, 11am – 12:45pm, 12.8.2026.">
+<meta name="theme-color" content="#fdfdf1">
+<link rel="preload" as="image" href="img/front.jpg">
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: #ffffff;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;          /* vertical center */
+    justify-content: center;      /* horizontal center */
+    padding: max(16px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+             max(16px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  }
+
+  /* Both artboards are 2101 × 1501 (≈ 1.4 : 1).
+     The column is as wide as the screen allows, but never so wide
+     that the two stacked images overflow the screen height. */
+  .stack {
+    --ratio: 1.3997;
+    width: min(100%, calc((100vh - 32px) * var(--ratio) / 2), 1200px);
+    width: min(100%, calc((100svh - 32px) * var(--ratio) / 2), 1200px);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2101 / 1501;
+    overflow: hidden;
+  }
+  .frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* Slideshow: every slide is stacked; only the active one is visible. */
+  .slides img { visibility: hidden; }
+  .slides img.is-active { visibility: visible; }
+
+  .sr-only {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0);
+    white-space: nowrap; border: 0;
+  }
+</style>
+</head>
+<body>
+  <main class="stack">
+    <div class="frame front">
+      <img src="img/front.jpg" alt="" width="2101" height="1501" fetchpriority="high">
+    </div>
+
+    <div class="frame slides" aria-hidden="true">
+      <img class="is-active" src="img/01.jpg" alt="" width="2101" height="1501">
+      <img src="img/02.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/03.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/04.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/05.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/06.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/07.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/08.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/09.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/10.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/11.jpg" alt="" width="2101" height="1501" loading="eager">
+      <img src="img/12.jpg" alt="" width="2101" height="1501" loading="eager">
+    </div>
+
+    <!-- Same text as the images, for screen readers and search engines. -->
+    <div class="sr-only">
+      <h1>Off-Brand</h1>
+      <p>Brand and Identity Design (F26) Final Show. UTK School of Design. AA 317 &amp; 319. 11am – 12:45pm. 12.8.2026.</p>
+      <h2>GRDS 471 / F26</h2>
+      <p>To build a brand is to build a world. In this course, 4th year students built worlds around a social purpose, bootlegged existing identities, and speculated scenarios for 2050. <i>Off-Brand</i> presents three projects that test the boundaries of what we call a brand.</p>
+      <p>Instructor: Stacy Danbee Kim</p>
+      <h2>Students</h2>
+      <ul>
+        <li>Callie Butler</li><li>Amari Evans</li><li>Kennedy Gaertner</li><li>Rachel Lawrence</li>
+        <li>Ashlynn Lee</li><li>Lola Lowe</li><li>Tallulah Mooney</li><li>Tess Mullen</li>
+        <li>Brooke Russo</li><li>Audrey Sehorn</li><li>Ava Thoeny</li><li>Cora Williams</li>
+      </ul>
+      <h2>Project 1 — Purpose-driven branding: What can a brand do?</h2>
+      <p>How can a brand serve people rather than the system? Each student paired a brand with a social purpose rooted in the UN’s Sustainable Development Goals (SDGs), and built an identity around what it stands for.</p>
+      <h2>Project 2 — B00tleg: Who does a brand belong to?</h2>
+      <p>Drawing on contemporary bootleg culture (e.g., Bootboyz Biz, Experimental Jetset), students took artifacts from existing brands as raw material to challenge, celebrate, or reclaim their meanings.</p>
+      <h2>Project 3 — Y2K50: What can a brand be?</h2>
+      <p>Students investigated signals from today, such as shifts in technology, climate, or how we live, and designed what people might need in a speculative 2050. Together, their ideas and artifacts form a constellation of possible futures.</p>
+    </div>
+  </main>
+
+<script>
+  (function () {
+    var INTERVAL = 1000; // ms per image
+    var slides = document.querySelectorAll('.slides img');
+    var i = 0;
+    setInterval(function () {
+      slides[i].classList.remove('is-active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-active');
+    }, INTERVAL);
+  })();
+</script>
+</body>
+</html>
